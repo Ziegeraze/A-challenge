@@ -64,14 +64,10 @@ public class PaymentSessionAuthorization extends PaymentSession {
 
                 long diff = firstInstant.until(lastInstant, ChronoUnit.SECONDS);
 
-                if (diff < TWO_MINUTES_IN_SECONDS) {
-                    if (p.getAmount() == this.amount && p.getCc().equals(this.cc)) {
-                        this.setViolations(DOUBLED_TRANSACTION);
-                    }
+                if (diff < TWO_MINUTES_IN_SECONDS && p.getAmount() == this.amount && p.getCc().equals(this.cc)) {
+                    this.setViolations(DOUBLED_TRANSACTION);
                 }
-
             }
-
         }
     }
 

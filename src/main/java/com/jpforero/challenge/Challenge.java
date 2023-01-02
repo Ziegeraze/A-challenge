@@ -4,7 +4,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
 import java.io.BufferedInputStream;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Scanner;
 
 import static com.jpforero.challenge.Constants.*;
 

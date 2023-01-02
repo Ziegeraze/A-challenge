@@ -12,9 +12,9 @@ import static com.jpforero.challenge.Constants.*;
 public class PaymentSession {
 
 
+    private final List<String> violations = new ArrayList<>();
     private int paymentId;
     private int availableLimit;
-    private final List<String> violations = new ArrayList<>();
 
     public int getPaymentId() {
         return paymentId;
@@ -64,7 +64,7 @@ public class PaymentSession {
     }
 
     public void storeSession(Map<Integer, PaymentSession> paymentSessions) {
-        if (!hasViolations()){
+        if (!hasViolations()) {
             paymentSessions.put(this.paymentId, this);
         }
     }
