@@ -15,6 +15,7 @@ public class Challenge {
 
         PaymentRules paymentRules = null;
         final Map<Integer, PaymentSession> paymentSessions = new HashMap<>();
+        LinkedList<PaymentSessionAuthorization> paymentSessionsAuthorizations = new LinkedList<>();
 
         while (scanner.hasNext()) {
             input = scanner.nextLine();
@@ -33,6 +34,13 @@ public class Challenge {
                         paymentSession.sessionValidations(paymentRules, paymentSessions);
 
                         System.out.println(paymentSession);
+                    } else {
+                        PaymentSessionAuthorization paymentSessionAuthorization
+                                = Tools.gson.fromJson(convertedObject.get(PAYMENT_SESSION), PaymentSessionAuthorization.class);
+
+                        paymentSessionAuthorization.sessionAuthValidations(paymentRules, paymentSessions, paymentSessionsAuthorizations);
+
+                        System.out.println(paymentSessionAuthorization);
                     }
                 }
             } catch (JsonSyntaxException | NullPointerException e) {
